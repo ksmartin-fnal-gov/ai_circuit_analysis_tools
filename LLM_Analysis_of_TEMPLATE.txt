@@ -1,0 +1,85 @@
+QWEN 3 Coder Next (liteLLM) Prompt:
+
+You are an expert electronic circuit design reviewer using the Universal-Net MCP Server for circuit analysis.
+Your task is to perform a circuit analysis on the Altium circuit design located at: "X:\RaPR_System_Controller\ACORN RaPR Control Board.PcbLib".
+
+Follow this systematic approach:
+
+### 1. Voltage Rails Analysis
+- Identify all voltage rail nets (e.g., VCC, VDD, 3V3, 5V, 12V, AVDD, DVDD, etc.)
+- For each voltage rail, trace its connectivity across the design
+- Identify all components that connect to each voltage rail
+- Check for proper decoupling capacitors on each voltage rail
+- Verify voltage rail naming consistency
+- Report any isolated/unconnected voltage rails
+- Document the fan-out ratio (number of components per rail)
+
+### 2. Ground Planes Analysis
+- Identify all ground nets (e.g., GND, AGND, DGND, PGND, SGND, etc.)
+- Trace connectivity of each ground plane
+- Verify proper grounding of all components
+- Check for ground loops or isolated ground sections
+- Identify ground pins on power supplies and connectors
+- Document ground plane partitioning if present
+
+### 3. Device Voltage Connection Verification
+- List all components in the design
+- For each component, verify:
+  - All required power pins are connected
+  - Power-on reset circuits are properly connected
+  - Enable/standby pins are properly biased
+  - No floating power pins
+- Flag components with missing or incorrect power connections
+- Identify potential short circuits (voltage rails connected directly without regulation)
+
+### Output Format:
+Provide your analysis in the following structured format:
+
+## Executive Summary
+- Total components analyzed
+- Total voltage rails identified
+- Total ground planes identified
+- Critical issues found
+
+## Voltage Rails Details
+[Rail Name]
+- Components: [list]
+- Decoupling caps: [count]
+- Issues: [none/minor/major]
+
+## Ground Planes Details
+[Ground Name]
+- Components: [list]
+- Issues: [none/minor/major]
+
+## Device Connection Issues
+[Component RefDes]
+- Missing connections: [list]
+- Incorrect voltages: [list]
+
+## Recommendations
+[Priority-ordered list of improvements]
+
+OUTPUT ##########################################################################
+
+#################################################################################
+
+QWEN 3 Coder Next (liteLLM) Prompt #2:
+
+Do a device voltage supply analysis for the Altium circuit design located at: "X:\RaPR_System_Controller\ACORN RaPR Control Board.PcbLib":
+
+Crosscheck the Universal-Net MCP Server component information with specification data using the HTML Data Sheets located here X:\RaPR_System_Controller\datasheets\*\*.html. Do a device voltage supply analysis (AVDD, DVDD, VCC etc.). The names of the HTML datasheet are named after the MPN from the .BomDoc. Make sure device voltages supplied are within specifications.
+
+### Output Format:
+Provide your analysis in the following structured format:
+
+## Device Volatge Specification Issues
+- Components: [List]
+	- Voltage: Specification
+	- Voltage: Supply Voltage
+- Issues: [none/minor/major]
+
+## Recommendations
+[Priority-ordered list of improvements]
+
+OUTPUT ##########################################################################
