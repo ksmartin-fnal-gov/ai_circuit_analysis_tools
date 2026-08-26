@@ -41,6 +41,7 @@ for pdf_file in "$DATASHEETS_DIR"/*.pdf; do
         # -q: quiet mode
         # -noframes: no frames
         if pdftohtml -i -q -noframes "$pdf_file" "$html_file"; then
+#        if pdftohtml -i -noframes "$pdf_file" "$html_file"; then
             echo "  Success"
         else
             echo "  Failed"
